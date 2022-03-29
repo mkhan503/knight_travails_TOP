@@ -1,6 +1,5 @@
-# creates vertices for the graph
-require_relative 'knight_moves.rb'
-# Creates vertex for Graph 
+require_relative 'knight_moves'
+# Creates vertex for Graph
 class Vertex
   attr_accessor :data, :score, :neighbors, :visited
 
@@ -42,9 +41,7 @@ class Graph
     moves.filter_map do |element|
       first = element[0] + coordinates[0]
       second = element[1] + coordinates[1]
-      if (0..7).include?(first) && (0..7).include?(second)
-        [first , second]
-      end
+      [first, second] if (0..7).include?(first) && (0..7).include?(second)
     end
   end
 
@@ -86,11 +83,9 @@ class Graph
   def add_vertices(current)
     array = []
     current.each_vertex_neighbor(vertices) do |vertex, neighbor|
-      if vertex.data == neighbor && vertex.score == current.score - 1
-        array << vertex
-      end
+      array << vertex if vertex.data == neighbor && vertex.score == current.score - 1
     end
-    array 
+    array
   end
 
   def current_vertex(dest)
@@ -99,5 +94,3 @@ class Graph
     current
   end
 end
-
-
