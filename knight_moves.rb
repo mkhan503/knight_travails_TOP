@@ -1,8 +1,6 @@
 require_relative 'input_output.rb'
 
 def knight_moves(start_point, end_point)
-  start_point = clean_input(start_point)
-  end_point = clean_input(end_point)
   graph = Graph.new
   current = graph.current_vertex(start_point)
   graph = graph.assign_scores(current, end_point)
