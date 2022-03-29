@@ -1,4 +1,4 @@
-require_relative 'knight_moves'
+
 # Creates vertex for Graph
 class Vertex
   attr_accessor :data, :score, :neighbors, :visited
