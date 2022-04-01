@@ -1,4 +1,3 @@
-
 # Creates vertex for Graph
 class Vertex
   attr_accessor :data, :score, :neighbors, :visited
@@ -45,14 +44,13 @@ class Graph
     end
   end
 
-  def assign_scores(current, end_point, visit_score = 0, queue = [current])
+  def assign_scores(current, end_point, queue = [current])
     return self if current.data == end_point
 
     current.visited = true
-    visit_score = current.score + 1
-    queue = add_to_queue(queue, current, visit_score)
-    queue.shift
-    assign_scores(queue[0], end_point, visit_score, queue)
+    score = current.score + 1
+    queue = add_to_queue(queue, current, score)
+    assign_scores(queue[0], end_point, queue)
   end
 
   def add_to_queue(queue, current, score)
@@ -62,6 +60,7 @@ class Graph
         queue << vertex
       end
     end
+    queue.shift
     queue
   end
 

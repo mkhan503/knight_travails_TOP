@@ -2,6 +2,7 @@ require_relative 'game_board.rb'
 require_relative 'graph_vertex.rb'
 require_relative 'input_output.rb'
 
+# Initializes and processes the game
 class Game
   include Board
   include InputOutput
@@ -17,11 +18,9 @@ class Game
   def start_game
     print_board
     puts "\n\nEnter your start position:"
-    start_point = gets.chomp.split('')
-    start_point = clean_input(start_point)
+    start_point = user_input
     puts 'Enter your end position:'
-    end_point = gets.chomp.split('')
-    end_point = clean_input(end_point)
+    end_point = user_input
     knight_moves(start_point, end_point)
   end
 
